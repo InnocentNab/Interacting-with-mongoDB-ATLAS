@@ -14,10 +14,8 @@ const PORT = process.env.PORT;
 const app = express();
 
 connectToMongoDB();
-
-app.use("/books", bookRoute);
-
 app.use(express.json()); //this is the body parser in express that gets our payload from the body
+app.use("/books", bookRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome Home");

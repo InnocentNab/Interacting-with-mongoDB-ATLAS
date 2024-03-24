@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+//const Schema = new mongoose.Schema
+// is const Schema = new mongoose.Schema({}) the same as Schema = mongoose.Schema; const book = new schema({})
 const Schema = mongoose.Schema;
 
 const BookModel = new Schema({
@@ -14,7 +16,7 @@ const BookModel = new Schema({
   year: {
     type: Number,
     required: true,
-    max: [2022, "Year must be less than or equal to 2020"], //validation with custom message
+    max: [2022], //validation with custom message
   },
   isbn: {
     type: String,
@@ -23,7 +25,7 @@ const BookModel = new Schema({
   price: {
     type: Number,
     required: true,
-    min: [0, "Price must be greater than or equal to 0"], //validation with custom message
+    min: [0], //validation with custom message
   },
   createAt: {
     type: Date,
@@ -37,4 +39,4 @@ const BookModel = new Schema({
 
 // after creating a schema, then we export it as a model
 
-export default mongoose.model("book", BookModel);
+export default mongoose.model("books", BookModel);
