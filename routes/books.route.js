@@ -1,6 +1,6 @@
 import express from "express";
 import BookModel from "../model/book.js";
-import book from "../model/book.js";
+// import book from "../model/book.js";
 
 const bookRoute = express.Router();
 
@@ -28,7 +28,6 @@ bookRoute.get("/:id", (req, res) => {
 bookRoute.post("/", (req, res) => {
   const books = req.body;
   console.log(books);
-  // books.lastUpdatAt = new Date();
   BookModel.create(books)
     .then((books) => {
       res.status(201).send({
@@ -44,7 +43,6 @@ bookRoute.post("/", (req, res) => {
 bookRoute.put("/:id", (req, res) => {
   const id = req.params.id;
   const book = req.body;
-  // book.lastUpdateAt = new Date(); // set the lastUpdateAt to the current date
   BookModel.findByIdAndUpdate(id, book, { new: true })
     .then((newBook) => {
       res.status(200).send(newBook);
